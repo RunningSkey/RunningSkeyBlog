@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>windows 系统快速搭建本地 git 服务器 | 奔跑的斯基</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/logo.jpg">
+    <meta name="description" content="我的个人网站">
+    
+    <link rel="preload" href="/assets/css/0.styles.e4d8b86b.css" as="style"><link rel="preload" href="/assets/js/app.0a1b7f52.js" as="script"><link rel="preload" href="/assets/js/2.dc28ec1d.js" as="script"><link rel="preload" href="/assets/js/24.98f4a59f.js" as="script"><link rel="prefetch" href="/assets/js/10.f444a00f.js"><link rel="prefetch" href="/assets/js/11.0af3ac52.js"><link rel="prefetch" href="/assets/js/12.f1b75f74.js"><link rel="prefetch" href="/assets/js/13.0a06b9a6.js"><link rel="prefetch" href="/assets/js/14.1fdf9968.js"><link rel="prefetch" href="/assets/js/15.5b539ceb.js"><link rel="prefetch" href="/assets/js/16.c5d6f814.js"><link rel="prefetch" href="/assets/js/17.d52d510a.js"><link rel="prefetch" href="/assets/js/18.c16d43de.js"><link rel="prefetch" href="/assets/js/19.80eb3131.js"><link rel="prefetch" href="/assets/js/20.14542afd.js"><link rel="prefetch" href="/assets/js/21.8991c58f.js"><link rel="prefetch" href="/assets/js/22.d7845402.js"><link rel="prefetch" href="/assets/js/23.ff131367.js"><link rel="prefetch" href="/assets/js/25.268cd177.js"><link rel="prefetch" href="/assets/js/26.c140aa7a.js"><link rel="prefetch" href="/assets/js/27.53d41722.js"><link rel="prefetch" href="/assets/js/28.0ebfa3cb.js"><link rel="prefetch" href="/assets/js/3.7f9388a7.js"><link rel="prefetch" href="/assets/js/4.ab349c03.js"><link rel="prefetch" href="/assets/js/5.7b4adc34.js"><link rel="prefetch" href="/assets/js/6.d0537508.js"><link rel="prefetch" href="/assets/js/7.f89d15e8.js"><link rel="prefetch" href="/assets/js/8.0075563a.js"><link rel="prefetch" href="/assets/js/9.679fb020.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.e4d8b86b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">奔跑的斯基</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/code/" class="nav-link">
+  代码片段记录
+</a></div><div class="nav-item"><a href="/bug/" class="nav-link">
+  踩过的坑
+</a></div><div class="nav-item"><a href="/base/" class="nav-link">
+  计算机基础
+</a></div><div class="nav-item"><a href="/project/" class="nav-link router-link-active">
+  前端工程
+</a></div><div class="nav-item"><a href="/vue/" class="nav-link">
+  vue
+</a></div><div class="nav-item"><a href="/react/" class="nav-link">
+  react
+</a></div><div class="nav-item"><a href="https://github.com/RunningSkey" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/code/" class="nav-link">
+  代码片段记录
+</a></div><div class="nav-item"><a href="/bug/" class="nav-link">
+  踩过的坑
+</a></div><div class="nav-item"><a href="/base/" class="nav-link">
+  计算机基础
+</a></div><div class="nav-item"><a href="/project/" class="nav-link router-link-active">
+  前端工程
+</a></div><div class="nav-item"><a href="/vue/" class="nav-link">
+  vue
+</a></div><div class="nav-item"><a href="/react/" class="nav-link">
+  react
+</a></div><div class="nav-item"><a href="https://github.com/RunningSkey" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/project/" aria-current="page" class="sidebar-link">目录</a></li><li><a href="/project/gitblit/" aria-current="page" class="active sidebar-link">搭建本地git服务器</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/project/module/" class="sidebar-link">前端模块化方案</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/project/module/#前端工程化发展历程" class="sidebar-link">前端工程化发展历程</a></li><li class="sidebar-sub-header"><a href="/project/module/#原始时期" class="sidebar-link">原始时期</a></li><li class="sidebar-sub-header"><a href="/project/module/#立即执行函数-iife" class="sidebar-link">立即执行函数（IIFE）</a></li><li class="sidebar-sub-header"><a href="/project/module/#commonjs" class="sidebar-link">CommonJs</a></li><li class="sidebar-sub-header"><a href="/project/module/#amd" class="sidebar-link">AMD</a></li><li class="sidebar-sub-header"><a href="/project/module/#cmd" class="sidebar-link">CMD</a></li><li class="sidebar-sub-header"><a href="/project/module/#umd" class="sidebar-link">UMD</a></li><li class="sidebar-sub-header"><a href="/project/module/#esm" class="sidebar-link">ESM</a></li></ul></li><li><a href="/project/bundle-tool/" class="sidebar-link">前端打包工具</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/project/bundle-tool/#结论" class="sidebar-link">结论</a></li><li class="sidebar-sub-header"><a href="/project/bundle-tool/#webpack" class="sidebar-link">webpack</a></li><li class="sidebar-sub-header"><a href="/project/bundle-tool/#rollup" class="sidebar-link">rollup</a></li><li class="sidebar-sub-header"><a href="/project/bundle-tool/#vite" class="sidebar-link">vite</a></li></ul></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>webpack</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="windows-系统快速搭建本地-git-服务器"><a href="#windows-系统快速搭建本地-git-服务器" class="header-anchor">#</a> windows 系统快速搭建本地 git 服务器</h1> <h3 id="_1-下载-zip-包"><a href="#_1-下载-zip-包" class="header-anchor">#</a> 1. 下载 zip 包</h3> <p>下载官网 <a href="http://gitblit.github.io/gitblit/" target="_blank" rel="noopener noreferrer">gitblit 包<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 或者百度网盘<a href="https://pan.baidu.com/s/18MjngYGxp91shlluP5zlrw" target="_blank" rel="noopener noreferrer">https://pan.baidu.com/s/18MjngYGxp91shlluP5zlrw<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 提取码:4xrj</p> <h3 id="_2-修改-defaults-properties"><a href="#_2-修改-defaults-properties" class="header-anchor">#</a> 2. 修改 defaults.properties</h3> <p><img src="https://img-blog.csdnimg.cn/20210508204132517.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Njc1OTM5Mw==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p> <div class="language-sh extra-class"><pre class="language-sh"><code>git.repositoriesFolder <span class="token operator">=</span> <span class="token variable">${baseFolder}</span>/git
+修改成:
+git.repositoriesFolder <span class="token operator">=</span> D:<span class="token punctuation">\</span>Desktop<span class="token punctuation">\</span>gitblit-1.9.1 //这个路径为当前解压缩文件的地址
+
+server.httpPort <span class="token operator">=</span> <span class="token number">0</span>
+修改成:
+server.httpPort <span class="token operator">=</span> <span class="token number">10010</span> //这个就是你要访问的端口号 确保它没有被占用
+</code></pre></div><h3 id="_3-启动项目"><a href="#_3-启动项目" class="header-anchor">#</a> 3. 启动项目</h3> <p>回到根目录,双击 gitblit.cmd <br>
+打开 cmd,查看本主机的 ip,用浏览器访问 ip:10010; 切忌不能使用 127.0.0.1:10010;</p> <p><img src="https://img-blog.csdnimg.cn/20210508205645660.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Njc1OTM5Mw==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"> <img src="https://img-blog.csdnimg.cn/20210508210013816.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Njc1OTM5Mw==,size_16,color_FFFFFF,t_70" alt="">
+管理员账号和密码:默认都是 admin</p> <h3 id="_4-创建一个版本库"><a href="#_4-创建一个版本库" class="header-anchor">#</a> 4. 创建一个版本库</h3> <p><img src="https://img-blog.csdnimg.cn/20210508213255583.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Njc1OTM5Mw==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p> <h3 id="_5-为其他人创建用户-并添加进项目"><a href="#_5-为其他人创建用户-并添加进项目" class="header-anchor">#</a> 5. 为其他人创建用户,并添加进项目</h3> <p><img src="https://img-blog.csdnimg.cn/2021050821355359.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Njc1OTM5Mw==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"> <img src="https://img-blog.csdnimg.cn/20210508213732962.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Njc1OTM5Mw==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p> <h3 id="_6-其他用户登录-并克隆项目"><a href="#_6-其他用户登录-并克隆项目" class="header-anchor">#</a> 6. 其他用户登录,并克隆项目</h3> <p><img src="https://img-blog.csdnimg.cn/20210508214000833.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Njc1OTM5Mw==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p> <h3 id="_7-修改文档-第一次提交代码"><a href="#_7-修改文档-第一次提交代码" class="header-anchor">#</a> 7. 修改文档,第一次提交代码</h3> <blockquote><p>创建一个文件夹 打开 git 命令行
+git clone 项目地址
+cd 项目名 //进入项目 并修改代码
+git add .
+git commit -m &quot;提交&quot;
+git push
+<img src="https://img-blog.csdnimg.cn/2021050822191769.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Njc1OTM5Mw==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p></blockquote> <h3 id="_8-配置秘钥"><a href="#_8-配置秘钥" class="header-anchor">#</a> 8. 配置秘钥</h3> <p>1.查看自己是否有秘钥
+默认秘钥在 C:\Users\windows 系统登录名.ssh
+<img src="https://img-blog.csdnimg.cn/20210508223122752.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Njc1OTM5Mw==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"> 2.如果没有创建秘钥
+生成秘钥：ssh-keygen -t rsa -C &quot;your_email@youremail.com&quot; ，直接 Enter 就行，然后会提示输入密码(可输可不输);
+命令中的 email，就是 gitlab 中的账号，需要保持一致; 3.找到秘钥,登录用户,添加秘钥
+<img src="https://img-blog.csdnimg.cn/20210508223534697.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80Njc1OTM5Mw==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">
+大功告成!</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/project/" class="prev router-link-active">
+        目录
+      </a></span> <span class="next"><a href="/project/module/">
+        前端模块化方案
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.0a1b7f52.js" defer></script><script src="/assets/js/2.dc28ec1d.js" defer></script><script src="/assets/js/24.98f4a59f.js" defer></script>
+  </body>
+</html>
