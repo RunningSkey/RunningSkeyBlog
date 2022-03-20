@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>浏览器中 Frame 与 Event Loop 的关系是什么 | 斯基</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/logo.jpg">
+    <meta name="description" content="我的个人网站">
+    
+    <link rel="preload" href="/assets/css/0.styles.64f7ac41.css" as="style"><link rel="preload" href="/assets/js/app.a08ad75d.js" as="script"><link rel="preload" href="/assets/js/2.dc28ec1d.js" as="script"><link rel="preload" href="/assets/js/10.45c31846.js" as="script"><link rel="prefetch" href="/assets/js/11.b6f3fa23.js"><link rel="prefetch" href="/assets/js/12.ba0c126b.js"><link rel="prefetch" href="/assets/js/13.5ff8b95c.js"><link rel="prefetch" href="/assets/js/14.3b329a33.js"><link rel="prefetch" href="/assets/js/15.cc024199.js"><link rel="prefetch" href="/assets/js/16.d31bf467.js"><link rel="prefetch" href="/assets/js/17.35445936.js"><link rel="prefetch" href="/assets/js/18.b52349b1.js"><link rel="prefetch" href="/assets/js/19.467179ee.js"><link rel="prefetch" href="/assets/js/20.22e7762f.js"><link rel="prefetch" href="/assets/js/21.ef021075.js"><link rel="prefetch" href="/assets/js/22.5b542727.js"><link rel="prefetch" href="/assets/js/23.38944382.js"><link rel="prefetch" href="/assets/js/24.36923207.js"><link rel="prefetch" href="/assets/js/25.a8034e0d.js"><link rel="prefetch" href="/assets/js/26.901795f9.js"><link rel="prefetch" href="/assets/js/27.89f796c3.js"><link rel="prefetch" href="/assets/js/28.ca39a570.js"><link rel="prefetch" href="/assets/js/29.1cb3cb0f.js"><link rel="prefetch" href="/assets/js/3.d1e72e9d.js"><link rel="prefetch" href="/assets/js/30.7586983f.js"><link rel="prefetch" href="/assets/js/31.0705f948.js"><link rel="prefetch" href="/assets/js/32.ea534941.js"><link rel="prefetch" href="/assets/js/33.dd3e1ff1.js"><link rel="prefetch" href="/assets/js/34.13bb97cc.js"><link rel="prefetch" href="/assets/js/4.d00e8aed.js"><link rel="prefetch" href="/assets/js/5.924404c5.js"><link rel="prefetch" href="/assets/js/6.d0537508.js"><link rel="prefetch" href="/assets/js/7.5a0d90b5.js"><link rel="prefetch" href="/assets/js/8.ca0d4b4d.js"><link rel="prefetch" href="/assets/js/9.e8b84e1c.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.64f7ac41.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">斯基</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/code/" class="nav-link">
+  代码片段记录
+</a></div><div class="nav-item"><a href="/bug/" class="nav-link">
+  踩过的坑
+</a></div><div class="nav-item"><a href="/base/" class="nav-link router-link-active">
+  计算机基础
+</a></div><div class="nav-item"><a href="/project/" class="nav-link">
+  前端工程
+</a></div><div class="nav-item"><a href="/react/" class="nav-link">
+  react
+</a></div><div class="nav-item"><a href="/vue/" class="nav-link">
+  vue
+</a></div><div class="nav-item"><a href="https://github.com/RunningSkey" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/code/" class="nav-link">
+  代码片段记录
+</a></div><div class="nav-item"><a href="/bug/" class="nav-link">
+  踩过的坑
+</a></div><div class="nav-item"><a href="/base/" class="nav-link router-link-active">
+  计算机基础
+</a></div><div class="nav-item"><a href="/project/" class="nav-link">
+  前端工程
+</a></div><div class="nav-item"><a href="/react/" class="nav-link">
+  react
+</a></div><div class="nav-item"><a href="/vue/" class="nav-link">
+  vue
+</a></div><div class="nav-item"><a href="https://github.com/RunningSkey" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/base/" aria-current="page" class="sidebar-link">目录</a></li><li><a href="/base/designModel/" class="sidebar-link">设计模式</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/base/designModel/#观察者模式" class="sidebar-link">观察者模式</a></li><li class="sidebar-sub-header"><a href="/base/designModel/#发布订阅者模式" class="sidebar-link">发布订阅者模式</a></li></ul></li><li><a href="/base/http/" class="sidebar-link">http和浏览器缓存</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/base/http/#前言" class="sidebar-link">前言</a></li><li class="sidebar-sub-header"><a href="/base/http/#http" class="sidebar-link">http</a></li><li class="sidebar-sub-header"><a href="/base/http/#浏览器缓存" class="sidebar-link">浏览器缓存</a></li><li class="sidebar-sub-header"><a href="/base/http/#nginx-如何配置缓存" class="sidebar-link">Nginx 如何配置缓存</a></li></ul></li><li><a href="/base/eventLoop/" aria-current="page" class="active sidebar-link">浏览器中Frame和Event Loop是什么</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/base/eventLoop/#前言" class="sidebar-link">前言</a></li><li class="sidebar-sub-header"><a href="/base/eventLoop/#浏览器中的frame" class="sidebar-link">浏览器中的Frame</a></li><li class="sidebar-sub-header"><a href="/base/eventLoop/#浏览器中的event-loop" class="sidebar-link">浏览器中的Event Loop</a></li></ul></li><li><a href="/base/vmware/" class="sidebar-link">vmware虚拟机</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/base/vmware/#安装虚拟机" class="sidebar-link">安装虚拟机</a></li><li class="sidebar-sub-header"><a href="/base/vmware/#共享主机网络" class="sidebar-link">共享主机网络</a></li></ul></li><li><a href="/base/mysql/" class="sidebar-link">CentOS7安装mysql</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/base/mysql/#安装-msyql" class="sidebar-link">安装 msyql</a></li><li class="sidebar-sub-header"><a href="/base/mysql/#配置-navcat-远程登录" class="sidebar-link">配置 navcat 远程登录</a></li><li class="sidebar-sub-header"><a href="/base/mysql/#安装数据库的坑" class="sidebar-link">安装数据库的坑</a></li><li class="sidebar-sub-header"><a href="/base/mysql/#windows-安装mysql" class="sidebar-link">windows 安装mysql</a></li></ul></li><li><a href="/base/hz_fps/" class="sidebar-link">HZ、FPS、垂直同步是什么</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/base/hz_fps/#hz" class="sidebar-link">HZ</a></li><li class="sidebar-sub-header"><a href="/base/hz_fps/#fps" class="sidebar-link">FPS</a></li><li class="sidebar-sub-header"><a href="/base/hz_fps/#垂直同步" class="sidebar-link">垂直同步</a></li></ul></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="浏览器中-frame-与-event-loop-的关系是什么"><a href="#浏览器中-frame-与-event-loop-的关系是什么" class="header-anchor">#</a> 浏览器中 Frame 与 Event Loop 的关系是什么</h1> <h2 id="前言"><a href="#前言" class="header-anchor">#</a> 前言</h2> <ol><li><p>浏览器的组成中有两大引擎，<code>js引擎</code> 和 <code>渲染引擎</code>，分别负责<code>js代码</code>执行和页面的渲染。</p></li> <li><p><code>Frame</code>即<code>帧</code>，1 帧可以理解成一张图，连接提供很多帧就形成了所谓的动画，常说的<code>fps</code>即<code>帧率</code>（<code>Frame per Second</code>）,是指<code>1s</code>时间<code>渲染引擎</code>给显示器提供多少的<code>帧</code>。</p></li> <li><p><code>Event Loop</code>即 事件循环。</p></li> <li><p><code>js</code> 是单线程的，通过<code>Event Loop</code>实行的异步操作。</p></li></ol> <h2 id="浏览器中的frame"><a href="#浏览器中的frame" class="header-anchor">#</a> 浏览器中的<code>Frame</code></h2> <div class="custom-block tip"><p class="custom-block-title">Frame</p> <p>指渲染引擎每隔 16ms (默认 60fps) 将渲染树渲染、合成位图的结果</p></div> <h2 id="浏览器中的event-loop"><a href="#浏览器中的event-loop" class="header-anchor">#</a> 浏览器中的<code>Event Loop</code></h2> <p>每次 <code>Event Loop</code> 是 <code>js引擎</code>执行的一个周期，执行过程中可能依赖<code>渲染引擎</code>的执行结果，比如访问 <code>DOM</code> 和 <code>CSSOM</code>，也可能影响<code>渲染引擎</code>去绘制<code>帧</code>，比如说调用 <code>requestAnimationFrame</code>，在每个帧开始绘制时执行一段回调函数（通常包含影响渲染结果的代码），因此 <code>Frame</code> 和 <code>Event</code> Loop 是相对独立的，但是 <code>Event Loop</code> 中执行代码可能依赖或者影响 <code>Frame</code>。</p> <div class="custom-block tip"><p class="custom-block-title">js 为什么是单线程</p> <p>正因为<code>js代码</code>执行可能依赖或者影响 <code>Frame</code>渲染,所以如果是多线程，两个线程同时对同一个DOM元素，一个要修改，一个要删除，就会出问题</p></div> <div class="custom-block tip"><p class="custom-block-title">js 如何实现异步的 -- 即（Event Loop 事件循环）</p> <p>它将js代码分为同步任务和异步任务，异步任务中又分为 宏任务 和 微任务。一段代码执行时，会判断当前任务是同步还是异步，如果是同步就直接执行，如果是异步任务，判断是宏任务则放入宏任务队列，是微任务则放入微任务队列，等待下一次调用。当当前任务没有同步任务了，就进行异步任务调用，先拿出异步任务中的微任务进行调用，微任务调用时遇到同步任务就立即执行，遇到异步任务就还是根据判断是微任务还是宏任务，再放入对应任务队列中，等待下次循环调用，然后再拿出宏任务进行调用，宏任务调用时，也会遇到同步任务或异步任务，所以也是同步任务立即执行，异步任务按照情况放入对应队列等待下一次循环调用。直到任务队列就没有任务了，js就停止执行了。</p></div> <p><img src="/assets/img/event_loop.webp" alt="事件循环"></p> <p>常见的宏任务：setTimeout，setInterval，MessaageChannel</p> <p>常见的微任务：Promise.then/.catch，MutationObserver</p> <p>考虑一下代码输出</p> <div class="language-js extra-class"><pre class="language-js"><code>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+
+<span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span>
+
+<span class="token keyword">var</span> pro <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span>reject</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
+  <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span>
+    <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+pro<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+</code></pre></div><p>答案：1,3,4,2,5,6</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/base/http/" class="prev">
+        http和浏览器缓存
+      </a></span> <span class="next"><a href="/base/vmware/">
+        vmware虚拟机
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.a08ad75d.js" defer></script><script src="/assets/js/2.dc28ec1d.js" defer></script><script src="/assets/js/10.45c31846.js" defer></script>
+  </body>
+</html>

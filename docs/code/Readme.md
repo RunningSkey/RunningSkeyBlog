@@ -1,6 +1,8 @@
 # 代码片段记录
 
-
+- [call、apply、bind](/code/changeThis/)
+- [debounce、throttle](/code/limitTime/)
+- [reactHooks](/code/reactHooks/)
 - [scss换肤](/code/scss/)
 - [rem适配](/code/rem/)
 - [检测本地exe程序是否存在](/code/protocolcheck/)

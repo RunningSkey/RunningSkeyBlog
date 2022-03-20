@@ -1,5 +1,5 @@
 module.exports = {
-  title: "奔跑的斯基",
+  title: "斯基",
   description: "我的个人网站",
   head: [
     // 注入到当前页面的 HTML <head> 中的标签
@@ -18,13 +18,16 @@ module.exports = {
       { text: "踩过的坑", link: "/bug/" },
       { text: "计算机基础", link: "/base/" },
       { text: "前端工程", link: "/project/" },
-      { text: "vue", link: "/vue/" },
       { text: "react", link: "/react/" },
+      { text: "vue", link: "/vue/" },
       { text: "github", link: "https://github.com/RunningSkey" },
     ],
     sidebar: {
       "/code": [
         ["/code/", "目录"],
+        ["/code/changeThis/", "实现call、apply、bind"],
+        ["/code/limitTime/", "实现debounce、throttle"],
+        ["/code/reactHooks/", "实现reactHooks"],
         ["/code/scss/", "scss换肤"],
         ["/code/rem/", "rem适配"],
         ["/code/protocolcheck/", "js检测并打开本地exe程序"],
@@ -33,9 +36,12 @@ module.exports = {
       ],
       "/base": [
         ["/base/","目录"],
+        ["/base/designModel/","设计模式"],
+        ["/base/http/","http和浏览器缓存"],
+        ["/base/eventLoop/","浏览器中Frame和Event Loop是什么"],
         ["/base/vmware/","vmware虚拟机"],
         ["/base/mysql/","CentOS7安装mysql"],
-        ["/base/http/","http和浏览器缓存"],
+        ["/base/hz_fps/","HZ、FPS、垂直同步是什么"],
       ],
       "/bug": [
         ["/bug/","目录"],
