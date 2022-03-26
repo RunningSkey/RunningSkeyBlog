@@ -4,8 +4,8 @@ heroImage: /hero.png
 actionText: 快速上手 →
 actionLink: /base/
 features:
-- title: 简洁至上
-  details: 以 Markdown 为中心的项目结构，以最少的配置帮助你专注于写作。
+- title: 三人行
+  details: 必有我师焉。
 - title: Vue 驱动
   details: 享受 Vue + webpack 的开发体验，可以在 Markdown 中使用 Vue 组件，又可以使用 Vue 来开发自定义主题。
 - title: 高性能

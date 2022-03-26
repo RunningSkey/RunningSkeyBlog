@@ -15,12 +15,10 @@
 ```js
 const debounce = (fn, delay = 500) => {
   let timeout;
-  console.log(fn);
-
-  return function () {
+  return function (...arg) {
     if (timeout) clearTimeout(timeout);
     timeout = setTimeout(() => {
-      fn.apply(this, ...arguments);
+      fn.apply(this, arg);
     }, delay);
   };
 };
@@ -33,12 +31,11 @@ const debounce = (fn, delay = 500) => {
 ```js
 const throttle = (fn, delay = 500) => {
   let flag = true;
-  console.log(fn);
-  return function () {
+  return function (...arg) {
     if (!flag) return;
     flag = false;
     setTimeout(() => {
-      fn.apply(this, ...arguments);
+      fn.apply(this, arg);
       flag = true;
     }, delay);
   };

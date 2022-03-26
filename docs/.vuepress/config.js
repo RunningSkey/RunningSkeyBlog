@@ -25,6 +25,11 @@ module.exports = {
     sidebar: {
       "/code": [
         ["/code/", "目录"],
+        ["/code/promise/", "实现基础版promise"],
+        ["/code/new/", "关键字new的实现"],
+        ["/code/inherit/", "js继承的多种模式"],
+        ["/code/currying/", "函数柯里化"],
+        ["/code/storage/", "storage和cookie的封装"],
         ["/code/changeThis/", "实现call、apply、bind"],
         ["/code/limitTime/", "实现debounce、throttle"],
         ["/code/reactHooks/", "实现reactHooks"],

@@ -1,5 +1,10 @@
 # 代码片段记录
 
+- [实现基础版promise](/code/promise/)
+- [关键字new的实现](/code/new/)
+- [js继承的多种模式](/code/inherit/)
+- [函数柯里化](/code/currying/)
+- [storage 和 cookie 的封装](/code/storage/)
 - [call、apply、bind](/code/changeThis/)
 - [debounce、throttle](/code/limitTime/)
 - [reactHooks](/code/reactHooks/)
