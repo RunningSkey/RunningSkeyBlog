@@ -3,12 +3,13 @@ module.exports = {
   description: "我的个人网站",
   head: [
     // 注入到当前页面的 HTML <head> 中的标签
-    ["link", { rel: "icon", href: "/logo.jpg" }], // 增加一个自定义的 favicon(网页标签的图标)
+    ["link", { rel: "icon", href: "/hero.png" }], // 增加一个自定义的 favicon(网页标签的图标)
   ],
   base: "/", // 这是部署到github相关的配置
   markdown: {
     lineNumbers: false, // 代码块显示行号
   },
+  plugins: ['@vuepress/last-updated','@vuepress/back-to-top'],
   themeConfig: {
     displayAllHeaders: true,
     nav: [
@@ -25,9 +26,19 @@ module.exports = {
     sidebar: {
       "/code": [
         ["/code/", "目录"],
-        ["/code/promise/", "实现基础版promise"],
+        {
+          name: "Promise",
+          title: "Promise",
+          collabsable: true,
+          children: [
+            ["/code/promise/1", "Promise"],
+            ["/code/promise/2", "Promise.all"],
+            ["/code/promise/3", "Promise.race"],
+          ],
+        },
         ["/code/new/", "关键字new的实现"],
         ["/code/inherit/", "js继承的多种模式"],
+        ['/code/compose/','洋葱模型和组合函数compose'],
         ["/code/currying/", "函数柯里化"],
         ["/code/storage/", "storage和cookie的封装"],
         ["/code/changeThis/", "实现call、apply、bind"],
@@ -41,6 +52,20 @@ module.exports = {
       ],
       "/base": [
         ["/base/","目录"],
+        {
+          name: "dataStructure",
+          title: "数据结构",
+          collabsable: true,
+          children: [
+            ["/base/dataStructure/1", "heap-堆"],
+            ["/base/dataStructure/2", "queue-队列"],
+            ["/base/dataStructure/3", "stack-栈"],
+            ["/base/dataStructure/4", "linkedList-链表"],
+          ],
+        },
+        ["/base/safety/","浏览器安全问题：CSRF攻击和XSS漏洞"],
+        ["/base/performance/","计算浏览器白屏时间和首屏时间"],
+        ["/base/script/","preload和prefetch、async和defer"],
         ["/base/designModel/","设计模式"],
         ["/base/http/","http和浏览器缓存"],
         ["/base/eventLoop/","浏览器中Frame和Event Loop是什么"],
@@ -62,7 +87,7 @@ module.exports = {
           name: "webpack",
           title: "webpack",
           collabsable: true,
-          children: [["/project/webpack/", "webpack关键词"]],
+          children: [["/project/webpack/1", "webpack关键词"]],
         },
       ],
     }, // 侧边栏配置
