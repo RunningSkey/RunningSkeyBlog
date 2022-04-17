@@ -11,3 +11,4 @@
 - [vmware 虚拟机](/base/vmware/)
 - [mysql 安装](/base/mysql/)
 - [ HZ、FPS、垂直同步是什么](/base/hz_fps/)
+- [学习路线](/base/learning/)

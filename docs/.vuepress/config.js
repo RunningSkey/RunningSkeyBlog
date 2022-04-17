@@ -72,6 +72,7 @@ module.exports = {
         ["/base/vmware/","vmware虚拟机"],
         ["/base/mysql/","CentOS7安装mysql"],
         ["/base/hz_fps/","HZ、FPS、垂直同步是什么"],
+        ["/base/learning/","学习路线"],
       ],
       "/bug": [
         ["/bug/","目录"],
