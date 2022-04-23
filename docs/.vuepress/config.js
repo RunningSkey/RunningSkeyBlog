@@ -26,6 +26,7 @@ module.exports = {
     sidebar: {
       "/code": [
         ["/code/", "目录"],
+        ["/code/treeOrArray/", "树与数组互相转换"],
         {
           name: "Promise",
           title: "Promise",
