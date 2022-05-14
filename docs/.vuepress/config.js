@@ -15,12 +15,13 @@ module.exports = {
     nav: [
       // 导航栏配置
       { text: "主页", link: "/" },
-      { text: "代码片段记录", link: "/code/" },
-      { text: "踩过的坑", link: "/bug/" },
+      { text: "code记录", link: "/code/" },
+      // { text: "踩过的坑", link: "/bug/" },
       { text: "计算机基础", link: "/base/" },
       { text: "前端工程", link: "/project/" },
-      { text: "react", link: "/react/" },
-      { text: "vue", link: "/vue/" },
+      { text: "前端面试题", link: "/interview/" },
+      // { text: "react", link: "/react/" },
+      // { text: "vue", link: "/vue/" },
       { text: "github", link: "https://github.com/RunningSkey" },
     ],
     sidebar: {
@@ -93,6 +94,15 @@ module.exports = {
           children: [["/project/webpack/1", "webpack关键词"]],
         },
       ],
+      "/interview": [
+        ["/interview/", "目录"],
+        ["/interview/1", "输入URL到浏览器的解析过程"],
+        ["/interview/2", "闭包"],
+        ["/interview/3", "作用域和作用域链"],
+        ["/interview/4", "原型和原型链"],
+        ["/interview/5", "输入URL到浏览器的解析过程"],
+        ["/interview/6", "输入URL到浏览器的解析过程"],
+      ]
     }, // 侧边栏配置
   },
 };
