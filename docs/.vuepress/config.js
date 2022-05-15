@@ -20,13 +20,16 @@ module.exports = {
       { text: "计算机基础", link: "/base/" },
       { text: "前端工程", link: "/project/" },
       { text: "前端面试题", link: "/interview/" },
-      // { text: "react", link: "/react/" },
+      { text: "react", link: "/react/1" },
       // { text: "vue", link: "/vue/" },
       { text: "github", link: "https://github.com/RunningSkey" },
     ],
     sidebar: {
       "/code": [
         ["/code/", "目录"],
+        ["/code/4", "iframe跨域和事件传递"],
+        ["/code/3", "websocket 心跳机制"],
+        ["/code/2", "flat平铺数组"],
         ["/code/1", "antd封装上传组件FormUpload"],
         ["/code/treeOrArray/", "树与数组互相转换"],
         {
@@ -100,8 +103,15 @@ module.exports = {
         ["/interview/2", "闭包"],
         ["/interview/3", "作用域和作用域链"],
         ["/interview/4", "原型和原型链"],
-        ["/interview/5", "输入URL到浏览器的解析过程"],
-        ["/interview/6", "输入URL到浏览器的解析过程"],
+        ["/interview/5", "Cookie有哪些属性"],
+        ["/interview/6", "HTML中meta有哪些属性"],
+        ["/interview/7", "深度优先和广度优先-递归和尾递归"],
+        ["/interview/8", "WebWorker 多线程"],
+        ["/interview/9", "装饰器的原理"],
+        ["/interview/10", "Vue和React的区别"],
+        ["/interview/11", "instance of 原理"],
+        ["/interview/12", "promise和async的区别"],
+        ["/interview/13", "手写vue原理，实现数据劫持"],
       ]
     }, // 侧边栏配置
   },
