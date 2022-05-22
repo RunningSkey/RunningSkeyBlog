@@ -27,6 +27,7 @@ module.exports = {
     sidebar: {
       "/code": [
         ["/code/", "目录"],
+        ["/code/8", "数字千位符"],
         ["/code/7", "js获取当月一共多少天"],
         ["/code/6", "数组去重"],
         ["/code/5", "deepClone 深克隆"],

@@ -1,5 +1,9 @@
 # 代码片段记录
 
+- [数字千位符](/code/8)
+- [js获取当月一共多少天](/code/7)
+- [数组去重](/code/6)
+- [deepClone 深克隆](/code/5)
 - [iframe跨域和事件传递](/code/4)
 - [websocket 心跳机制](/code/3)
 - [flat 平铺数组](/code/2)
