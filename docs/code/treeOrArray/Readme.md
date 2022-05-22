@@ -55,8 +55,8 @@ console.log(arr);
 //...忽略
 
 //第二步将arr 和 已有节点数组比较 留下所有有关系newArr
-//全量arr
-let arr = [
+//全量数组
+let allArr = [
   { id: 1000, parentId: null, name: "生物", level: 1 },
   { id: 1001, parentId: null, name: "废物1", level: 1 },
   { id: 1, parentId: 1000, name: "动物", level: 2 },
@@ -80,7 +80,7 @@ const getFilterId = (arr) => {
   const map = {};
   for (let i = 0; i < arr.length; i++) {
     map[arr[i].id] = true; //把自己id
-    let parentObj = data.find((item) => item.id === arr[i].parentId); //父节点对象
+    let parentObj = allArr.find((item) => item.id === arr[i].parentId); //父节点对象
     do {
       // console.log({ parentObj });
       map[parentObj.id] = true;
@@ -88,14 +88,14 @@ const getFilterId = (arr) => {
       if (parentObj.parentId) {
         map[parentObj.parentId] = true;
       }
-      parentObj = data.find((item) => item.id === parentObj.parentId);
+      parentObj = allArr.find((item) => item.id === parentObj.parentId);
     } while (parentObj);
   }
   return map;
 };
 const obj = getFilterId(currentArr);
 //留下所有有关系newArr
-const newArr = data.filter((item) => obj[item.id]);
+const newArr = allArr.filter((item) => obj[item.id]);
 
 //第三步再把arr转tree
 //数组转树

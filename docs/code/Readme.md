@@ -1,5 +1,10 @@
 # 代码片段记录
 
+- [iframe跨域和事件传递](/code/4)
+- [websocket 心跳机制](/code/3)
+- [flat 平铺数组](/code/2)
+- [antd 封装上传组件 FormUpload](/code/1)
+- [树与数组互相转换](/code/treeOrArray/)
 - [Promise](/code/promise/1)
 - [关键字new的实现](/code/new/)
 - [js继承的多种模式](/code/inherit/)

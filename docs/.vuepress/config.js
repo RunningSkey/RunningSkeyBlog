@@ -27,6 +27,9 @@ module.exports = {
     sidebar: {
       "/code": [
         ["/code/", "目录"],
+        ["/code/7", "js获取当月一共多少天"],
+        ["/code/6", "数组去重"],
+        ["/code/5", "deepClone 深克隆"],
         ["/code/4", "iframe跨域和事件传递"],
         ["/code/3", "websocket 心跳机制"],
         ["/code/2", "flat平铺数组"],
@@ -112,6 +115,9 @@ module.exports = {
         ["/interview/11", "instance of 原理"],
         ["/interview/12", "promise和async的区别"],
         ["/interview/13", "手写vue原理，实现数据劫持"],
+        ["/interview/14", "Map、WekMap、Set、WekSet区别"],
+        ["/interview/15", "跨域"],
+        ["/interview/16", "跨标签页通信"],
       ]
     }, // 侧边栏配置
   },
