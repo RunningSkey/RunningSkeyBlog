@@ -44,6 +44,7 @@ module.exports = {
             ["/code/promise/1", "Promise"],
             ["/code/promise/2", "Promise.all"],
             ["/code/promise/3", "Promise.race"],
+            ["/code/promise/4", "Promise.concurrent并发"],
           ],
         },
         ["/code/new/", "关键字new的实现"],
