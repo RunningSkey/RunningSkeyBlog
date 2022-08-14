@@ -95,6 +95,7 @@ module.exports = {
         ["/project/gitblit/", "搭建本地git服务器"],
         ["/project/module/", "前端模块化方案"],
         ["/project/bundle-tool/", "前端打包工具"],
+        ["/project/rollup/","rollup"],
         {
           name: "webpack",
           title: "webpack",

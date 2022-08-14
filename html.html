@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const data = [];
+      const schools = 100;
+      const course = 10;
+
+      const creatData = () => {
+        const courseLen = Math.floor(Math.random() * course + 1);
+        const adc = [];
+        for(let i = 0;i<courseLen;i++){
+          adc.push(Math.floor(Math.random() * course + 1));
+        }
+        // console.log(adc);
+        return ({
+        school: Math.floor(Math.random() * schools + 1),
+        favCourse: Math.floor(Math.random() * course + 1),
+        adcCourse: [...new Set(adc)].join('|'),
+      });
+      }
+      for (let i = 0; i < 100000; i++) {
+        data.push(creatData());
+      }
+      console.log(data);
+      const students = data.length;
+
+      const statistics = {
+        schools: {},
+        schoolsStudents: {},
+        courseCount: {}
+      };
+      console.time();
+      for (let i = 0; i < data.length; i++) {
+        const item = data[i];
+        //如果有这个学校了
+        if (statistics.schools[item.school]) {
+          statistics.schoolsStudents[item.school]++;
+          //如果有科目
+          if (statistics.schools[item.school][item.favCourse]) {
+            statistics.schools[item.school][item.favCourse].students++;
+          } else {
+            statistics.schools[item.school][item.favCourse] = {
+              students: 1,
+            };
+          }
+        } else {
+          statistics.schoolsStudents[item.school] = 1;
+          const map = {};
+          map[item.favCourse] = {
+            students: 1,
+          };
+          statistics.schools[item.school] = map;
+        }
+
+        const advCourse = item.adcCourse.split('|');
+
+        for(let j=0;j<advCourse.length;j++){
+          const courseItem = advCourse[j];
+          if(statistics.courseCount[courseItem]){
+            statistics.courseCount[courseItem]++;
+          }else{
+            statistics.courseCount[courseItem] = 1;
+          }
+        }
+       
+
+      }
+
+      console.log(statistics);
+      for (const school in statistics.schools) {
+        const courses = statistics.schools[school];
+        for (const course in courses) {
+          console.log(
+            `学校${school}喜欢科目${course}的人数是${courses[course].students}`
+          );
+          console.log(
+            `学校${school}总人数是${statistics.schoolsStudents[school]}`
+          );
+          console.log(
+            `学校${school}喜欢科目${course}的喜爱度是${
+              ((courses[course].students / statistics.schoolsStudents[school]) * 100 ).toFixed(2)
+            }%`
+          );
+          console.log(`=========`);
+        }
+      }
+      console.timeEnd();
+
+
+      for(const courseItem in statistics.courseCount){
+        console.log(`对科目${courseItem}，${(statistics.courseCount[courseItem] / students * 100).toFixed(2)}% 的人认为自己有优势`)
+      }
+
+      
+    </script>
+  </body>
+</html>

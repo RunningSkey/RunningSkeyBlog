@@ -1,0 +1,14 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "ie": 10 
+          //如果代码运行的浏览器支持 ES Modules,应当指定如下配置.不过,此时 browsers 选项将被忽略
+          // "esmodules": true
+        }
+      }
+    ]
+  ]
+}
