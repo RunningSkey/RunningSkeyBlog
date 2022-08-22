@@ -96,12 +96,12 @@ module.exports = {
         ["/project/module/", "前端模块化方案"],
         ["/project/bundle-tool/", "前端打包工具"],
         ["/project/rollup/","rollup"],
-        {
-          name: "webpack",
-          title: "webpack",
-          collabsable: true,
-          children: [["/project/webpack/1", "webpack关键词"]],
-        },
+        // {
+        //   name: "webpack",
+        //   title: "webpack",
+        //   collabsable: true,
+        //   children: [["/project/webpack/1", "webpack关键词"]],
+        // },
       ],
       "/interview": [
         ["/interview/", "目录"],

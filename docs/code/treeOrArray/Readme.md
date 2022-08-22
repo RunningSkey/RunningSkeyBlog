@@ -48,73 +48,49 @@ const arr = formatArray(tree);
 console.log(arr);
 ```
 
-## 根据已有节点数组和全量节点树 重新组装筛选树
+## 根据已有根节点数组和全量节点树 重新组装筛选树
 
 ```js
-//第一步将tree转为arr
-//...忽略
+//全量树 上面tree
 
-//第二步将arr 和 已有节点数组比较 留下所有有关系newArr
-//全量数组
-let allArr = [
-  { id: 1000, parentId: null, name: "生物", level: 1 },
-  { id: 1001, parentId: null, name: "废物1", level: 1 },
-  { id: 1, parentId: 1000, name: "动物", level: 2 },
-  { id: 2, parentId: 1000, name: "植物", level: 2 },
-  { id: 8, parentId: 1001, name: "废物1-1", level: 2 },
-  { id: 3, parentId: 1, name: "老虎", level: 3 },
-  { id: 4, parentId: 1, name: "狮子", level: 3 },
-  { id: 5, parentId: 2, name: "玫瑰花", level: 3 },
-  { id: 6, parentId: 2, name: "百合花", level: 3 },
-  { id: 11, parentId: 8, name: "废物1-1-1", level: 3 },
-];
 //已存在根节点数组
-let currentArr = [
+const currentArr = [
   { id: 3, parentId: 1, name: "老虎", level: 3 },
   { id: 4, parentId: 1, name: "狮子", level: 3 },
-  { id: 11, parentId: 8, name: "废物1-1-1", level: 3 },
   { id: 5, parentId: 2, name: "玫瑰花", level: 3 },
 ];
-// 找到所有id 存入map
-const getFilterId = (arr) => {
-  const map = {};
-  for (let i = 0; i < arr.length; i++) {
-    map[arr[i].id] = true; //把自己id
-    let parentObj = allArr.find((item) => item.id === arr[i].parentId); //父节点对象
-    do {
-      // console.log({ parentObj });
-      map[parentObj.id] = true;
-      // 如果父节点不是顶级节点
-      if (parentObj.parentId) {
-        map[parentObj.parentId] = true;
-      }
-      parentObj = allArr.find((item) => item.id === parentObj.parentId);
-    } while (parentObj);
-  }
-  return map;
-};
-const obj = getFilterId(currentArr);
-//留下所有有关系newArr
-const newArr = allArr.filter((item) => obj[item.id]);
 
-//第三步再把arr转tree
-//数组转树
-const formatTree = (arr) => {
-  const map = {};
-  const res = [];
-  arr.forEach((item) => {
-    map[item.id] = item;
-  });
-  arr.forEach((item) => {
-    const parent = map[item.parentId];
-    if (parent) {
-      parent.children ? parent.children.push(item) : (parent.children = [item]);
-    } else {
-      res.push(item);
+//第一步将递归遍历全量树的根节点
+//判断 当前根节点 在不在 已有根节点数组 里面
+//如果在 就给当前根节点的所有上级节点打上标记 has 属性
+
+const fn1 = (t, level) => {
+  t.forEach((item) => {
+    if (item.children) {
+      fn1(item.children, level.concat([item]));
+    } else if (currentArr.find((i) => i.id === item.id)) {
+      level.forEach((i) => (i.has = true));
+      item.has = true;
     }
   });
-  return res;
+  return t;
 };
-const newTree = formatTree(newArr);
-console.log(newTree);
+console.log(fn1(tree, []));
+
+//第二步再次递归遍历这颗树
+//将当前item.children = item.children.filter(i => i.has)
+//如果筛选完item.children 长度大于0 就继续调用
+const fn2 = (t) => {
+  t.forEach((item) => {
+    if (item.children && item.children.length) {
+      item.children = item.children.filter((i) => i.has);
+      if (item.children.length) {
+        fn2(item.children);
+      }
+    }
+  });
+  return t;
+};
+console.log(fn2(tree));
+//最后就得到一颗新树
 ```
